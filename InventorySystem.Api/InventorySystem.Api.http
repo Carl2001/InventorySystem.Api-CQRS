@@ -1,0 +1,24 @@
+@Hostname = http://localhost:5022
+
+### 1. Get Token (Login)
+POST {{Hostname}}/api/auth/token
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
+
+### 2. Create Category (POST - Dapper)
+POST {{Hostname}}/api/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiZXhwIjoxNzkzOTIwNjQyLCJpc3MiOiJJbnZlbnRvcnlTeXN0ZW1BcGkiLCJhdWQiOiJJbnZlbnRvcnlTeXN0ZW1Vc2VycyJ9.QtZKFJlbdanLODncI42UgchRqL607mcejr3uLPwGoTk
+
+{
+  "name": "Electronics",
+  "description": "Technological devices and gadgets"
+}
+
+### 3. Get Categories (GET - Entity Framework)
+GET {{Hostname}}/api/category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiZXhwIjoxNzkzOTIwNjQyLCJpc3MiOiJJbnZlbnRvcnlTeXN0ZW1BcGkiLCJhdWQiOiJJbnZlbnRvcnlTeXN0ZW1Vc2VycyJ9.QtZKFJlbdanLODncI42UgchRqL607mcejr3uLPwGoTk

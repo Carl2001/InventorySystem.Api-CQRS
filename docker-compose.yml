@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=TuPasswordSeguro123!
+    ports:
+      - "1433:1433"
+
+  api:
+    image: inventorysystem-api
+    build:
+      context: .
+      dockerfile: InventorySystem.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=InventoryDb;User Id=sa;Password=TuPasswordSeguro123!;TrustServerCertificate=True;
+    depends_on:
+      - sqlserver
